@@ -258,8 +258,7 @@ export default function PatientDashboard() {
                     <Icon size={28} />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
-                    <span className="text-base font-bold truncate" style={{ color: 'var(--text-primary)' }}>{action.title}</span>
-                    <span className="text-xs font-medium truncate" style={{ color: 'var(--text-muted)' }}>{action.desc}</span>
+                    <span className="t-medium truncate" style={{ color: 'var(--text-muted)' }}>{action.desc}</span>
                   </div>
                 </motion.button>
               );
