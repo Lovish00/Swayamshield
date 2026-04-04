@@ -12,9 +12,12 @@ const HEALTH_TIMEOUT_MS = 2500;
 const STARTUP_WAIT_MS = 20000;
 const SYMPTOM_CACHE_TTL_MS = 5 * 60 * 1000;
 
+// Check if AI model is disabled (set to 'disabled' on Railway)
+const isAIModelDisabled = process.env.AI_MODEL_BASE_URL === 'disabled';
+
 const LOCAL_HOSTS = new Set(['127.0.0.1', 'localhost']);
-const baseUrl = new URL(AI_MODEL_BASE_URL);
-const isLocalModelService = LOCAL_HOSTS.has(baseUrl.hostname);
+const baseUrl = isAIModelDisabled ? null : new URL(AI_MODEL_BASE_URL);
+const isLocalModelService = baseUrl ? LOCAL_HOSTS.has(baseUrl.hostname) : false;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '../../..');
